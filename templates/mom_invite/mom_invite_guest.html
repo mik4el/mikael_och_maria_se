@@ -1,0 +1,26 @@
+{% extends "base_main.html" %}
+{% load mom_invite_extras %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h1 class="page-header">{{title}}</h1>
+<form action="." method="POST">
+  	{% csrf_token %}
+	<ul>
+	{% for field in the_guestform %}
+    <li>{{ field.label }}{% if field.field.required %}*{% endif %} {{ field }}
+    {% if field.errors %}
+	<div class="alert alert-error">
+		 <button type="button" class="close" data-dismiss="alert">×</button>
+		{{ field.errors.as_text }}
+	</div>
+    {% endif %}
+    </li>
+    {% endfor %}
+    </ul>
+    <p>Fält markerade med * är obligatoriska.</p>
+	<input class="btn btn-primary" type="submit" value="{{submit_name}}">
+</form>
+{% endblock %}

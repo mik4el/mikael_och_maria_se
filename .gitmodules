@@ -1,0 +1,33 @@
+[submodule "deploy/cookbooks/apt"]
+	path = deploy/cookbooks/apt
+	url = git://github.com/opscode-cookbooks/apt.git
+[submodule "deploy/cookbooks/ntp"]
+	path = deploy/cookbooks/ntp
+	url = git://github.com/opscode-cookbooks/ntp.git
+[submodule "deploy/cookbooks/build-essential"]
+	path = deploy/cookbooks/build-essential
+	url = git://github.com/opscode-cookbooks/build-essential.git
+[submodule "deploy/cookbooks/runit"]
+	path = deploy/cookbooks/runit
+	url = git://github.com/opscode-cookbooks/runit.git
+[submodule "deploy/cookbooks/ohai"]
+	path = deploy/cookbooks/ohai
+	url = git://github.com/opscode-cookbooks/ohai.git
+[submodule "deploy/cookbooks/openssl"]
+	path = deploy/cookbooks/openssl
+	url = git://github.com/opscode-cookbooks/openssl.git
+[submodule "deploy/cookbooks/python"]
+	path = deploy/cookbooks/python
+	url = git://github.com/opscode-cookbooks/python.git
+[submodule "deploy/cookbooks/git"]
+	path = deploy/cookbooks/git
+	url = git://github.com/opscode-cookbooks/git.git
+[submodule "deploy/cookbooks/nginx"]
+	path = deploy/cookbooks/nginx
+	url = git://github.com/opscode-cookbooks/nginx.git
+[submodule "deploy/cookbooks/mysql"]
+	path = deploy/cookbooks/mysql
+	url = git://github.com/opscode-cookbooks/mysql.git
+[submodule "deploy/cookbooks/yum"]
+	path = deploy/cookbooks/yum
+	url = git://github.com/opscode-cookbooks/yum.git

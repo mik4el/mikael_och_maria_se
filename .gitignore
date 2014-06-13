@@ -1,0 +1,5 @@
+.settings
+conf/.idea
+*.pyc
+.DS_Store
+.vagrant

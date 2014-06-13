@@ -1,0 +1,7 @@
+bind = "127.0.0.1:8888"
+backlog = 2048
+workers = 3
+errorlog = '/home/webapp/logs/gunicorn.log'
+loglevel = 'debug'
+proc_name = 'gunicorn-webapp'
+pidfile = '/var/run/webapp.pid'

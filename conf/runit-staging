@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+ENV=/home/webapp/env/bin/activate
+GUNICORN=gunicorn_django
+SETTINGS_PATH=/home/webapp/fft_5fonder/fft_5fonder/settings
+PROJECT_PATH=/home/webapp/fft_5fonder
+CONFROOT=/home/webapp/fft_5fonder/conf/gunicorn.conf.py
+
+cd $SETTINGS_PATH
+source $ENV
+export PYTHONPATH=$PROJECT_PATH
+exec $GUNICORN fft_5fonder.settings.staging -c $CONFROOT

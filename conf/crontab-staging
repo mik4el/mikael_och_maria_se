@@ -1,0 +1,2 @@
+#cronjobs to run for webapp user, format: <minute, hour, day of month, month, day of week, user, command, remember newline in EOF
+1 11 * * * webapp /home/webapp/fft_5fonder/conf/cronjobs/daily-staging

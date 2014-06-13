@@ -1,0 +1,7 @@
+MySQL-python
+django
+gunicorn
+django-ses
+django-registration
+PIL
+django-blog-zinnia

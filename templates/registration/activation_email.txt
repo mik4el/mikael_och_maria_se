@@ -1,0 +1,10 @@
+Hej!
+
+Den här epostadressen har använts för att skapa ett konto på MikaelochMaria.se. Var vänlig aktivera kontot på MikaelochMaria.se genom att följa länken nedan:
+http://MikaelochMaria.se{% url registration_activate activation_key %}
+
+Ett lösenord för ditt konto kommer sedan skickas till din epost-adress som du kan använda nästa gång du loggar in.
+
+Länken är giltig i {{ expiration_days }} dagar.
+
+Ha en bra dag!

@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+ENV=/home/webapp/env/bin/activate
+GUNICORN=gunicorn_django
+SETTINGS_PATH=/home/webapp/mikael_och_maria_se/mikael_och_maria_se/settings
+PROJECT_PATH=/home/webapp/mikael_och_maria_se
+CONFROOT=/home/webapp/mikael_och_maria_se/conf/gunicorn.conf.py-production
+PID=/var/run/webapp.pid
+
+cd $SETTINGS_PATH
+source $ENV
+export PYTHONPATH=$PROJECT_PATH
+exec $GUNICORN mikael_och_maria_se.settings.production -c $CONFROOT

@@ -1,0 +1,16 @@
+{% extends "base_main.html" %}
+
+{% block content %}
+
+{% if account %}
+
+	<p>Kontot har aktiverats!</p>
+	<p><a href="{% url auth_login %}">Logga in</a></p>
+
+{% else %}
+
+	<p>Aktiveringen misslyckades tyvärr!</p>
+
+{% endif %}
+
+{% endblock %}

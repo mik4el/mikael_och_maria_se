@@ -1,0 +1,15 @@
+{% extends "base_main.html" %}
+
+{% block head %}
+<meta http-equiv="Refresh" content="3;url=/" />
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+	<h1>Du har loggat ut</h1>
+</div>
+<p>Du skickas till <a href="/">första sidan</a> om några sekunder...</p>
+<script type="text/javascript">
+	setTimeout("window.location.href='/'", 3000);
+</script>
+{% endblock %}

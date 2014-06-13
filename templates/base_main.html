@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head id="main_head">  
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">	
+	{% if title %}
+	<title>MikaelochMaria.se - {{ title }}</title>
+	{% else %}
+	<title>MikaelochMaria.se</title>
+	{% endif %}
+	
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css" type="text/css"/>
+	
+	<!-- IE hack for console.log -->
+	<script type="text/javascript">
+		if(typeof console === "undefined") {
+    		console = {log: function(){}};
+		}
+	</script>
+
+	{% block head %}
+    {% endblock %}
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+	    <div class="navbar-inner">
+		    <div class="container">
+		     	
+				<a class="brand" href="/">
+					MikaelochMaria.se
+				</a>
+				<div class="nav-collapse subnav-collapse">
+					<ul class="nav">
+					{% ifequal page_name 'information' %}
+						<li class="active">
+					{% else %}
+						<li>
+					{% endifequal %}
+							<a href="/information/">Information</a>
+						</li>
+						<li>
+							<a href="/blogg/">Blogg</a>
+						</li>
+					{% if user.is_authenticated %}
+						{% ifequal page_name 'invite' %}
+						<li class="active">
+						{% else %}
+						<li>
+						{% endifequal %}
+							<a href="/inbjudan/" style="color:pink;">Min inbjudan</a>
+						</li>
+						<li>
+							<a href="{% url auth_logout %}">Logga ut</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="{% url auth_login %}">Logga in</a>
+						</li>
+					{% endif %}
+					</ul>
+				</div>           
+		    </div>
+	    </div>
+    </div>
+<div class="contentWrapper">
+	<div class="container" style="padding-top:80px;">
+		
+		<div class="row">
+			<div class="span12" id="messages">
+				<noscript>
+					<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">×</button>
+						<div style="text-align:center;">
+						Din webbläsare verkar inte stödja javascript eller så är javascript avstängt. MikaelochMaria.se kräver javascript för att fungera tillfredställande.
+						<br><br>
+						Aktivera javascript eller byt webbläsare.
+						</div>
+					</div>
+				</noscript>
+			</div>
+		</div>
+
+		{% block content %}
+    	{% endblock %}
+   </div>
+    <footer class="footer" id="footer">
+		<div class="container">
+			<br>
+			<p class="pull-right">
+			<a href="#">Överst på sidan</a>
+			</p>
+			<p>MikaelochMaria.se 2013</p>
+			{% block footer %}
+        	{% endblock %}
+		</div>
+	</footer>
+
+	<!-- Start js -->
+
+	<script src="{{ STATIC_URL }}js/jquery-1.8.0.min.js" type="text/javascript"></script>
+	<script src="{{ STATIC_URL }}js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!-- Other js -->	
+	{% block bottom %}
+    {% endblock %}	
+    </div>
+</body>
+</html>

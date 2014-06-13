@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+ENV=/home/webapp/env/bin/activate
+PYTHON=/home/webapp/env/bin/python
+ROOT=/home/webapp/fft_5fonder
+
+cd $ROOT
+source $ENV
+python manage.py update_data --all --settings=fft_5fonder.settings.staging &&
+python manage.py send_emails --all --settings=fft_5fonder.settings.staging &&
+python manage.py handle_subscriptions --all --settings=fft_5fonder.settings.staging &&
+python manage.py admin_report --send --settings=fft_5fonder.settings.staging &&
+echo "$(date) Did run daily-staging" >> /home/webapp/logs/cron.log

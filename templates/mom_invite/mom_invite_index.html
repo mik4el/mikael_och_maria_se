@@ -1,0 +1,113 @@
+{% extends "base_main.html" %}
+{% load mom_invite_extras %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<div style="text-align:center;">
+	<h1 class="page-header">Hej {{ profile.name }}!</h1>
+	<h2>Hur ställer ni er till inbjudan?</h2>
+	<div class="row">
+		<div class="span6" style="text-align:right;">
+			<form method="post" action=".">
+				{% csrf_token %}
+				<input type="hidden" value="True" name="attend_status">
+				{% if profile.has_answered %}
+				{% if profile.is_attending %}
+					<div class="btn btn-success btn-large disabled">Vi tackar gärna ja till inbjudan</div>
+				{% else %}
+					<input type="submit" class="btn btn-success btn-large" value="Vi tackar gärna ja till inbjudan" name="no_thanks_form" />
+				{% endif %}
+				{% else %}
+					<input type="submit" class="btn btn-success btn-large" value="Vi tackar gärna ja till inbjudan" name="no_thanks_form" />
+				{% endif %}
+			</form>
+		</div>
+		<div class="span6" style="text-align:left;">
+			<form method="post" action=".">
+				{% csrf_token %}
+			  	<input type="hidden" value="False" name="attend_status">
+				{% if profile.has_answered %}
+				{% if profile.is_attending %}
+					<input type="submit" class="btn btn-warning btn-large" value="Vi tackar tyvärr nej till inbjudan" name="no_thanks_form" />
+				{% else %}
+					<div class="btn btn-warning btn-large">Vi tackar tyvärr nej till inbjudan</div>
+				{% endif %}
+				{% else %}
+					<input type="submit" class="btn btn-warning btn-large" value="Vi tackar tyvärr nej till inbjudan" name="no_thanks_form" />
+				{% endif %}
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span2">
+			&nbsp;
+		</div>
+		{% if profile.has_answered %}
+		{% if profile.is_attending %}
+		<div class="alert alert-success span8">
+			<p>Vad roligt! Ni har tackat ja till inbjudan, var god ange information om ert sällskap nedan.</p>
+		</div>
+		{% else %}
+		<div class="alert alert-warning span8">
+			<p>Just nu har ni tackat nej till inbjudan, ni kan alltid ändra er till och med den 30 april 2013.</p>
+		</div>
+		{% endif %}
+		{% endif %}
+		<div class="span2">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12">
+			{% if profile.is_attending %}
+			<h2>Lägg till de som deltar från ert sällskap!</h2>
+			<p>Vi behöver information om de som deltar från ditt sällskap, tryck på "Lägg till gäst!"-nedan och fyll i uppgifter för varje person i ditt sällskap.</p>
+			<a href="/inbjudan/gast/ny/" class="btn btn-large btn-primary">
+				<i class="icon-user icon-white"></i> Lägg till gäst!
+			</a>
+			{% if guests %}
+				<h3>Dina gäster</h3>
+				{% for guest in guests %}
+					{% show_guest the_guest=guest %}
+				{% endfor %}
+			{% endif %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+<hr>
+<br>
+<p>Genom att använda MikaelochMaria.se accepterar du vår <a href="/integritetspolicy/">integritetspolicy.</a></p>
+
+<div id="modalMessage" class="modal hide fade" aria-hidden="true" aria-labelledby="modalMessageLabel" role="dialog" tabindex="-1" style="display: none;">
+	<div class="modal-header">
+	<button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+		<h3 id="modalMessageLabel">Rubrik</h3>
+	</div>
+	<div class="modal-body" id="modalMessageBody">
+		Text
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal">Ok</button>
+	</div>
+</div>
+			
+{% endblock %}
+
+{% block bottom %}
+
+<script type="text/javascript">
+
+	//if page loads with hash, do action
+	if (window.location.hash == "#nejtack") {
+		$('#modalMessageLabel').html("Vad tråkigt, vi hoppas att se er snart ändå!");
+		$('#modalMessageBody').html("Du har tackat nej till inbjudan. Du kan alltid ändra dig innan den 30 april. Tack ändå!");
+		$('#modalMessage').modal('show');
+	}
+
+</script>
+
+{% endblock %}

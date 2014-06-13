@@ -1,0 +1,32 @@
+{% extends "base_main.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+	<div class="span12">
+		<div class="hero-unit">
+			<h1>Välkommen!</h1>
+			<h3>
+			{% if not user.is_authenticated %}
+			Logga in för
+			{% else %}
+			<br>
+			{% if time_left %}
+			Om {{ time_left.days }} dagar smäller det!
+			{%else%}
+			Där small det.
+			{%endif%}
+			<br>
+			<br>
+			Klicka vidare för
+			{% endif %}
+			<a href="/information/">mer information</a> och för att <a href="/inbjudan/">svara på din inbjudan</a>.</h3>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block bottom %}
+{% endblock %}

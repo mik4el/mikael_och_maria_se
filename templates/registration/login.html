@@ -1,0 +1,14 @@
+{% extends "base_main.html" %}
+
+{% block content %}
+<h1>Logga in</h1>
+<p>Fyll i användarnamn och lösenord som du fick med inbjudan.</p>
+<form method="post" action=".">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" class="btn btn-large btn-success" value="Logga in">
+  <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+<p>Glömt lösenordet? <a href="{% url auth_password_reset %}">Återställ lösenord</a>!</p>
+{% endblock %}
